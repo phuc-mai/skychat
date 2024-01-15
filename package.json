@@ -19,6 +19,8 @@
     "next-auth": "^4.24.5",
     "next-cloudinary": "^5.18.0",
     "next-ws": "^1.0.0",
+    "pusher": "^5.2.0",
+    "pusher-js": "^8.4.0-rc2",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.49.2",

@@ -2,22 +2,27 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Logout, Person } from "@mui/icons-material";
+import { Logout } from "@mui/icons-material";
+import { signOut, useSession } from "next-auth/react";
 
 import { links } from "@constants";
 import Image from "next/image";
-import { signOut, useSession } from "next-auth/react";
-import Loader from "@components/Loader";
 
 const TopBar = () => {
   const pathname = usePathname();
 
   const { data: session } = useSession();
-  const user = session?.user
+  const user = session?.user;
+
+  const handleLogout = async () => {
+    signOut({ callbackUrl: "/" });
+  };
 
   return (
     <div className="topbar">
-      <Link href="/chats"><Image src="/assets/logo.png" alt="logo" width={180} height={70} /></Link>
+      <Link href="/chats">
+        <Image src="/assets/logo.png" alt="logo" width={180} height={70} />
+      </Link>
       <div className="menu">
         {links.map((link) => (
           <Link
@@ -33,27 +38,16 @@ const TopBar = () => {
 
         <Logout
           sx={{ color: "#737373", cursor: "pointer" }}
-          onClick={() => signOut()}
+          onClick={handleLogout}
         />
 
-        {!user || user?.profileImagePath === "" ? (
-          <Link href="/profile">
-            <img
-              src="/assets/person.jpg"
-              alt="profile"
-              className="profilePhoto"
-            />
-          </Link>
-        ) : (
-          <Link href="/profile">
-            <img
-              src={user.profileImagePath}
-              alt="profile"
-              className="profilePhoto"
-            />
-          </Link>
-        )}
-      
+        <Link href="/profile">
+          <img
+            src={user?.profileImage || "/assets/person.jpg"}
+            alt="profile"
+            className="profilePhoto"
+          />
+        </Link>
       </div>
     </div>
   );

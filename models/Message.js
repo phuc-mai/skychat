@@ -12,9 +12,11 @@ const MessageSchema = new mongoose.Schema(
     },
     text: {
       type: String,
+      default: "",
     },
     photo: {
       type: String,
+      default: "",
     },
     createdAt: {
       type: Date,

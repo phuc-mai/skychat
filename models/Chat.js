@@ -17,6 +17,10 @@ const ChatSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  groupPhoto: {
+    type: String,
+    default: "",
+  },
   createdAt: {
     type: Date,
     default: Date.now,

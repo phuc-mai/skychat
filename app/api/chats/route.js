@@ -1,4 +1,6 @@
+import { pusherServer } from "@lib/pusher";
 import Chat from "@models/Chat";
+import Message from "@models/Message";
 import User from "@models/User";
 import { connectToDB } from "@mongodb";
 
@@ -8,25 +10,51 @@ export const POST = async (req) => {
 
     const body = await req.json();
 
-    const { currentUserId, partnerId, name, members, isGroup } = body;
+    const { currentUserId, members, isGroup, name, groupPhoto } = body;
 
-    // Defind "query" to find the chat
+    // Define "query" to find the chat
     const query = isGroup
-      ? { isGroup, name, members: [currentUserId, ...members] }
-      : { members: { $all: [currentUserId, partnerId], $size: 2 } };
+      ? { isGroup, name, groupPhoto, members: [currentUserId, ...members] }
+      : { members: { $all: [currentUserId, ...members], $size: 2 } };
 
     let chat = await Chat.findOne(query);
 
     if (!chat) {
       chat = new Chat(
-        isGroup ? query : { members: [currentUserId, partnerId] }
+        isGroup ? query : { members: [currentUserId, ...members] }
       );
-      await chat.save();
+
+      chat = await chat.save();
+
+      const populatedChat = await Chat.findById(chat._id)
+        .sort({ lastMessageAt: 1 })
+        .populate({
+          path: "messages",
+          model: Message,
+          populate: { path: "sender seenBy", model: User },
+        })
+        .populate({
+          path: "members",
+          model: User,
+        })
+        .exec();
+
+      /* Adds new chat to the current user's chats array */
+      await User.findByIdAndUpdate(
+        currentUserId,
+        { $addToSet: { chats: chat._id } },
+        { new: true }
+      );
+
+      /* Triggers a Pusher event for each member of the chat, notifying them about new chat */
+      chat.members.map((member) => {
+        pusherServer.trigger(member._id.toString(), "new-chat", populatedChat);
+      });
     }
 
-    return new Response(JSON.stringify(chat), { status: 200 });
+    return new Response(JSON.stringify(populatedChat), { status: 200 });
   } catch (err) {
+    console.log(err);
     return new Response("Failed to create a new chat", { status: 500 });
   }
 };
-

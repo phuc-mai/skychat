@@ -42,7 +42,7 @@ const UserForm = ({ type, data }) => {
       });
 
       if (res.ok) {
-        router.push("/login");
+        router.push("/");
       }
 
       if (res.error) {
@@ -130,11 +130,11 @@ const UserForm = ({ type, data }) => {
               <input
                 {...register("password", {
                   required: "Password is required",
-                  validate: (value) => {
-                    if (value.length < 5 || !value.match(/[^a-zA-Z0-9]/g)) {
-                      return "Password must be more than 5 characters and contain at least 1 special";
-                    }
-                  },
+                  // validate: (value) => {
+                  //   if (value.length < 5 || !value.match(/[^a-zA-Z0-9]/g)) {
+                  //     return "Password must be more than 5 characters and contain at least 1 special";
+                  //   }
+                  // },
                 })}
                 type="password"
                 placeholder="Password"

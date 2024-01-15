@@ -12,11 +12,11 @@
 
 /* Login & Register Pages */
 .auth {
-  @apply w-full h-screen flex items-center justify-center;
+  @apply w-full h-lvh flex items-center justify-center;
 }
 
 .content {
-  @apply h-[550px] w-1/3 max-sm:w-5/6 max-lg:w-2/3 max-xl:w-1/2 flex flex-col items-center justify-center gap-6 bg-white rounded-3xl ;
+  @apply h-[550px] w-1/3 max-sm:w-5/6 max-lg:w-2/3 max-xl:w-1/2 flex flex-col items-center justify-center gap-6 bg-white rounded-3xl;
 }
 
 .logo {
@@ -53,56 +53,85 @@
 }
 
 .profilePhoto {
-  @apply w-11 h-11 rounded-full;
+  @apply w-11 h-11 rounded-full object-cover object-center;
 }
 
-/* Main Container */
-.main-container {
-  @apply h-screen flex justify-between gap-8 px-10 py-3;
+/* Profile Page */
+.profile-page {
+  @apply h-lvh flex flex-col gap-11 items-center justify-center;
 }
 
-/* ChatsBar */
+.edit-profile {
+  @apply flex flex-col gap-9
+}
+
+.profile {
+  @apply w-1/3 max-sm:w-5/6 max-lg:w-2/3 max-xl:w-1/2 flex flex-col items-center justify-center gap-6 bg-white rounded-3xl;
+}
+
+.btn {
+  @apply flex items-center justify-center rounded-xl p-3 bg-gradient-to-l from-blue-1 to-blue-3 text-body-bold text-white;
+}
+
+/* Chat List */
 .chat-list {
-  @apply w-1/3 flex flex-col gap-5;
+  @apply flex flex-col gap-5;
 }
 
-.input-container {
-  @apply w-full flex items-center justify-between px-5 py-3 rounded-2xl cursor-pointer bg-white;
+.input-search {
+  @apply px-5 py-3 rounded-2xl bg-white outline-none;
 }
 
 .chats {
-  @apply flex-1 flex flex-col bg-white rounded-3xl py-4 overflow-y-scroll custom-scrollbar;
+  @apply flex flex-col bg-white rounded-3xl py-4 px-3 overflow-y-scroll custom-scrollbar;
 }
 
 /* Chat Box */
 .chat-box {
-  @apply flex items-start justify-between p-4 cursor-pointer hover:bg-grey-2;
+  @apply flex items-start justify-between p-2 rounded-2xl cursor-pointer hover:bg-grey-2;
+}
+
+.current-chat {
+  @apply bg-blue-2;
 }
 
 .chat-info {
   @apply flex gap-3;
 }
 
-/* ChatDetails */
-.empty-chat {
-  @apply w-2/3 flex items-center justify-center bg-white rounded-2xl text-body-bold;
+/* Contacts */
+.create-chat {
+  @apply flex flex-col gap-5;
 }
 
+.contact-bar {
+  @apply flex gap-7 items-start max-lg:flex-col;
+}
+
+.contact-list {
+  @apply w-1/2 max-lg:w-full flex flex-col gap-5 bg-white rounded-3xl py-5 px-8 overflow-y-scroll custom-scrollbar;
+}
+
+.contact {
+  @apply flex gap-3 items-center cursor-pointer;
+}
+
+.input-group-name {
+  @apply bg-white rounded-2xl px-5 py-3 outline-none ;
+}
+
+.selected-contact {
+  @apply text-base-bold p-2 bg-pink-1 rounded-lg;
+}
+
+/* ChatDetails */
 .chat-details {
   @apply w-2/3 flex flex-col bg-white rounded-2xl;
 }
 
 /* Chat Header */
 .chat-header {
-  @apply w-full flex items-center justify-between px-8 py-3;
-}
-
-.contact {
-  @apply flex items-center gap-4 text-body-bold;
-}
-
-.icons {
-  @apply flex items-center gap-4;
+  @apply flex items-center gap-4 px-8 py-3 text-body-bold;
 }
 
 /* Chat Body */
@@ -114,16 +143,12 @@
   @apply flex gap-3 items-start;
 }
 
-.right {
-  @apply justify-end;
-}
-
 .message-profilePhoto {
   @apply w-8 h-8 rounded-full;
 }
 
 .message-info {
-  @apply flex flex-col items-end gap-2;
+  @apply flex flex-col gap-2;
 }
 
 .message-photo {
@@ -134,8 +159,8 @@
   @apply w-fit bg-white p-3 rounded-lg text-base-medium;
 }
 
-.sender {
-  @apply w-fit bg-purple-2 p-3 rounded-lg text-base-medium text-white;
+.message-text-sender {
+  @apply w-fit bg-purple-2 text-white p-3 rounded-lg text-base-medium;
 }
 
 /* Message Input */
