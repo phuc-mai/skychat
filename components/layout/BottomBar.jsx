@@ -17,7 +17,7 @@ const BottomBar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center p-2 bg-white">
+    <div className="bottom-bar">
       {links.map((link) => (
         <Link
           key={link.label}

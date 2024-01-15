@@ -82,7 +82,7 @@ const Contacts = () => {
   return loading ? (
     <Loader />
   ) : (
-    <div className="create-chat">
+    <div className="create-chat-container">
       <input
         placeholder="Search Contacts..."
         className="input-search"
@@ -117,7 +117,7 @@ const Contacts = () => {
           ))}
         </div>
 
-        <div className="flex flex-col gap-7">
+        <div className="create-chat">
           {selectedContacts.length > 1 && (
             <>
               <div className="flex flex-col gap-3">

@@ -28,10 +28,12 @@ const ChatPage = () => {
   }, [currentUser, chatId]);
 
   return (
-    <div className="flex justify-between gap-5 px-10 py-3">
-      <ChatList currentChatId={chatId} />
-      
-      <div className="max-lg:hidden w-2/3">
+    <div className="main-container">
+      <div className="w-1/3 max-lg:hidden">
+        <ChatList currentChatId={chatId} />
+      </div>
+
+      <div className="w-2/3 max-lg:w-full">
         <ChatDetails chatId={chatId} />
       </div>
     </div>

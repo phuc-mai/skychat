@@ -43,9 +43,14 @@
   @apply text-base-medium hover:text-red-1;
 }
 
-/* TopBar */
+/* Main Container */
+.main-container {
+  @apply h-screen flex justify-between gap-5 px-10 py-3 max-lg:gap-8;
+}
+
+/* Top Bar */
 .topbar {
-  @apply top-0 sticky px-10 py-5 flex items-center justify-between;
+  @apply top-0 sticky px-10 py-5 flex items-center justify-between bg-blue-2;
 }
 
 .menu {
@@ -56,6 +61,10 @@
   @apply w-11 h-11 rounded-full object-cover object-center;
 }
 
+/* Bottom Bar */
+.bottom-bar {
+  @apply fixed bottom-0 z-50 w-full flex justify-between items-center px-5 py-2 bg-white sm:hidden
+}
 /* Profile Page */
 .profile-page {
   @apply h-lvh flex flex-col gap-11 items-center justify-center;
@@ -75,7 +84,7 @@
 
 /* Chat List */
 .chat-list {
-  @apply flex flex-col gap-5;
+  @apply h-screen flex flex-col gap-5;
 }
 
 .input-search {
@@ -83,7 +92,7 @@
 }
 
 .chats {
-  @apply flex flex-col bg-white rounded-3xl py-4 px-3 overflow-y-scroll custom-scrollbar;
+  @apply flex-1 flex flex-col bg-white rounded-3xl py-4 px-3 overflow-y-scroll custom-scrollbar;
 }
 
 /* Chat Box */
@@ -100,7 +109,7 @@
 }
 
 /* Contacts */
-.create-chat {
+.create-chat-container {
   @apply flex flex-col gap-5;
 }
 
@@ -116,6 +125,10 @@
   @apply flex gap-3 items-center cursor-pointer;
 }
 
+.create-chat {
+  @apply w-1/2 max-lg:w-full flex flex-col gap-7;
+}
+
 .input-group-name {
   @apply bg-white rounded-2xl px-5 py-3 outline-none ;
 }
@@ -126,7 +139,7 @@
 
 /* ChatDetails */
 .chat-details {
-  @apply w-2/3 flex flex-col bg-white rounded-2xl;
+  @apply h-screen flex flex-col bg-white rounded-2xl;
 }
 
 /* Chat Header */
@@ -165,12 +178,17 @@
 
 /* Message Input */
 .send-message {
-  @apply w-full flex items-center justify-between px-7 py-4 rounded-3xl cursor-pointer bg-white;
+  @apply w-full flex items-center justify-between px-7 py-3 rounded-3xl cursor-pointer bg-white;
 }
 
 .prepare-message {
   @apply flex items-center gap-4;
 }
+
+.send-icon {
+  @apply w-10 h-10 rounded-full hover:scale-125 ease-in-out duration-300;
+}
+
 /* BottomBar */
 .bottombar {
   @apply bottom-0 sticky px-10 py-5 flex items-center justify-between sm:hidden;

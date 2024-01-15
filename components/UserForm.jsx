@@ -17,8 +17,8 @@ const UserForm = ({ type, data }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (session?.status === 'authenticated') {
-      router.push('/chats')
+    if (session?.status === "authenticated") {
+      router.push("/chats");
     }
   }, [session?.status, router]);
 
@@ -29,7 +29,6 @@ const UserForm = ({ type, data }) => {
   } = useForm({
     defaultValues: data,
   });
-
 
   const onSubmit = async (data) => {
     if (type === "register") {
@@ -67,17 +66,22 @@ const UserForm = ({ type, data }) => {
   };
 
   const signInWithGoogle = async () => {
-    signIn("google", { redirect: false }).then((callback) => {
-      if (callback?.error) {
-        toast.error("Invalid credentials!");
-      }
-
-      if (callback?.ok) {
-        router.push("/chats");
-      }
-    });
+    signIn("google", { redirect: false, callbackUrl: "/chats" });
   };
 
+  // const signInWithGoogle = async () => {
+  //   signIn("google", { redirect: false }).then((callback) => {
+  //     if (callback?.error) {
+  //       toast.error("Invalid credentials!");
+  //     }
+
+  //     if (callback?.ok) {
+  //       router.push("/chats");
+  //     }
+  //   });
+  // };
+
+  console.log(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
   return (
     <div className="auth">
       <div className="content">
@@ -159,7 +163,7 @@ const UserForm = ({ type, data }) => {
         </button>
 
         {type === "register" ? (
-          <Link href="/login" className="link">
+          <Link href="/" className="link">
             Already have an account? Sign In Here
           </Link>
         ) : (

@@ -156,6 +156,7 @@ const ChatDetails = ({ chatId }) => {
           >
             <AddPhotoAlternate
               sx={{
+                fontSize: "35px",
                 color: "#737373",
                 cursor: "pointer",
                 "&:hover": { color: "#ff5252" },
@@ -170,14 +171,17 @@ const ChatDetails = ({ chatId }) => {
             required
           />
         </div>
-        <SendRounded
+        <div onClick={sendText}>
+          <img src="/assets/send.jpg" className="send-icon" />
+        </div>
+        {/* <SendRounded
           sx={{
             color: "#737373",
             cursor: "pointer",
             "&:hover": { color: "#ff5252" },
           }}
           onClick={sendText}
-        />
+        /> */}
       </div>
     </div>
   );

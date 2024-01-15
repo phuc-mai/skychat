@@ -26,7 +26,7 @@ export const POST = async (req) => {
 
       chat = await chat.save();
 
-      const populatedChat = await Chat.findById(chat._id)
+      chat = await Chat.findById(chat._id)
         .sort({ lastMessageAt: 1 })
         .populate({
           path: "messages",
@@ -48,11 +48,11 @@ export const POST = async (req) => {
 
       /* Triggers a Pusher event for each member of the chat, notifying them about new chat */
       chat.members.map((member) => {
-        pusherServer.trigger(member._id.toString(), "new-chat", populatedChat);
+        pusherServer.trigger(member._id.toString(), "new-chat", chat);
       });
     }
 
-    return new Response(JSON.stringify(populatedChat), { status: 200 });
+    return new Response(JSON.stringify(chat), { status: 200 });
   } catch (err) {
     console.log(err);
     return new Response("Failed to create a new chat", { status: 500 });
