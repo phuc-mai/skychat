@@ -65,9 +65,9 @@ const UserForm = ({ type, data }) => {
     }
   };
 
-  const signInWithGoogle = async () => {
-    signIn("google", { redirect: false, callbackUrl: "/chats" });
-  };
+  // const signInWithGoogle = async () => {
+  //   signIn("google", { redirect: false, callbackUrl: "/chats" });
+  // };
 
   // const signInWithGoogle = async () => {
   //   signIn("google", { redirect: false }).then((callback) => {
@@ -81,7 +81,6 @@ const UserForm = ({ type, data }) => {
   //   });
   // };
 
-  console.log(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
   return (
     <div className="auth">
       <div className="content">
@@ -156,19 +155,19 @@ const UserForm = ({ type, data }) => {
           </button>
         </form>
 
-        <p>----- Or continue -----</p>
+        {/* <p>----- Or continue -----</p>
 
         <button className="button" onClick={() => signInWithGoogle()}>
           Sign In with Google{" "}
-        </button>
+        </button> */}
 
         {type === "register" ? (
           <Link href="/" className="link">
-            Already have an account? Sign In Here
+            <p className="text-center">Already have an account? Sign In Here</p>
           </Link>
         ) : (
           <Link href="/register" className="link">
-            Don't have an account? Register Here
+            <p className="text-center">Don't have an account? Register Here</p>
           </Link>
         )}
       </div>
