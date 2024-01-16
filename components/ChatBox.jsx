@@ -62,7 +62,7 @@ const ChatBox = ({ chat, currentUser, currentChatId }) => {
             )
           ) : (
             <p
-              className={`w-[120px] sm:max-md:w-[250px] xl:w-full truncate ${
+              className={`last-message ${
                 seen ? "text-small-medium text-grey-3" : "text-small-bold"
               }`}
             >

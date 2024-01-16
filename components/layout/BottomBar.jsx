@@ -1,6 +1,5 @@
 "use client";
 
-import { links } from "@constants";
 import { Logout } from "@mui/icons-material";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -18,18 +17,25 @@ const BottomBar = () => {
 
   return (
     <div className="bottom-bar">
-      {links.map((link) => (
-        <Link
-          key={link.label}
-          href={link.url}
-          className={`${
-            pathname === link.url ? "text-red-1" : ""
-          } text-heading4-bold`}
-        >
-          {link.label}
-        </Link>
-      ))}
-
+      <Link
+        key="chats"
+        href="/chats"
+        className={`${
+          pathname === "/chats" ? "text-red-1" : ""
+        } text-heading4-bold`}
+      >
+        Chats
+      </Link>
+      <Link
+        key="contacts"
+        href="/contacts"
+        className={`${
+          pathname === "/contacts" ? "text-red-1" : ""
+        } text-heading4-bold`}
+      >
+        {" "}
+        Contacts
+      </Link>
       <Logout
         sx={{ color: "#737373", cursor: "pointer" }}
         onClick={handleLogout}

@@ -84,7 +84,7 @@
 
 /* Chat List */
 .chat-list {
-  @apply h-screen flex flex-col gap-5;
+  @apply h-screen flex flex-col gap-5 pb-10;
 }
 
 .input-search {
@@ -106,6 +106,10 @@
 
 .chat-info {
   @apply flex gap-3;
+}
+
+.last-message {
+  @apply w-[120px] sm:w-[250px] truncate;
 }
 
 /* Contacts */
