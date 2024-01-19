@@ -31,5 +31,4 @@ export const GET = async (req, { params }) => {
     console.log(error);
     return new Response("Failed to get searched chats", { status: 500 });
   }
-}
-
+};

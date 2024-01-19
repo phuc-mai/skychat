@@ -1,11 +1,6 @@
 import { format } from "date-fns";
 
-const MessageBox = ({ isLast, message, currentUser }) => {
-  const seenPeople = message.seenBy
-    .filter((user) => user._id !== message?.sender?._id)
-    .map((user) => user.username)
-    .join(", ");
-
+const MessageBox = ({ message, currentUser }) => {
   return message?.sender?._id !== currentUser._id ? (
     <div className="message-box">
       <img

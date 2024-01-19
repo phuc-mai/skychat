@@ -109,9 +109,7 @@ const ChatDetails = ({ chatId }) => {
                 alt="profile"
                 className="profilePhoto"
               />
-              <div className="text">
-                <p className="text-base-bold">{person.username}</p>
-              </div>
+              <p className="text-base-bold">{person.username}</p>
             </>
           ))
         ) : (
@@ -124,11 +122,9 @@ const ChatDetails = ({ chatId }) => {
               />
             </Link>
 
-            <div className="text">
-              <p className="text-base-bold">
-                {chat.name} &#160; &#183; &#160; {chat.members.length} members
-              </p>
-            </div>
+            <p className="text-base-bold">
+              {chat.name} &#160; &#183; &#160; {chat.members.length} members
+            </p>
           </>
         )}
       </div>
@@ -138,7 +134,6 @@ const ChatDetails = ({ chatId }) => {
           <p key={index}>
             <MessageBox
               key={message._id}
-              isLast={index === chat?.messages - 1}
               message={message}
               currentUser={currentUser}
             />
@@ -174,14 +169,6 @@ const ChatDetails = ({ chatId }) => {
         <div onClick={sendText}>
           <img src="/assets/send.jpg" className="send-icon" />
         </div>
-        {/* <SendRounded
-          sx={{
-            color: "#737373",
-            cursor: "pointer",
-            "&:hover": { color: "#ff5252" },
-          }}
-          onClick={sendText}
-        /> */}
       </div>
     </div>
   );

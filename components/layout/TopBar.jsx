@@ -19,7 +19,8 @@ const TopBar = () => {
   return (
     <div className="topbar">
       <Link href="/chats">
-        <Image src="/assets/logo.png" alt="logo" width={180} height={70} />
+        {/* <Image src="/assets/logo.png" alt="logo" width={180} height={70} /> */}
+        <img src="/assets/logo.png" alt="logo" className="logo" />
       </Link>
       <div className="menu">
         <Link

@@ -20,7 +20,7 @@
 }
 
 .logo {
-  @apply w-52 h-auto;
+  @apply w-48 h-auto;
 }
 
 .form {
@@ -67,7 +67,7 @@
 }
 /* Profile Page */
 .profile-page {
-  @apply h-lvh flex flex-col gap-11 items-center justify-center;
+  @apply mt-16 flex flex-col gap-11 items-center justify-center;
 }
 
 .edit-profile {
